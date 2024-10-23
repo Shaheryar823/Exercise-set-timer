@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="timer-container">
+        <h1>Exercise Timer</h1>
+        <div class="timer-display js-timer-display">00:00</div>
+        <div class="break-display js-break-display">Break: 00:00</div>
+        <button class="start-btn js-start-btn" onclick="start()">Start</button>
+        <button class="stop-btn js-stop-btn">Stop</button>
+        <div>
+            <label for="sets">Sets:</label>
+            <input type="number" class="sets js-sets" value="2" min="1" />
+        </div>
+        <div>
+            <label for="setDuration">Set Time (min):</label>
+            <input type="number" class="set-duration js-set-duration" value="1" min="1" />
+        </div>
+        <div>
+            <label for="breakDuration">Break Time (sec):</label>
+            <input type="number" class="break-duration js-break-duration" value="30" min="1" />
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
