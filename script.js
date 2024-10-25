@@ -14,9 +14,7 @@ function workOutTime(){
         seconds = 9;
         exerciseDuration -=1;
     }
-    m = exerciseDuration <= 9? `0${exerciseDuration}`: `${exerciseDuration}`;
-    s = seconds <= 9? `0${seconds}`: `${seconds}`;
-    set = `${m}:${s}`;
+    set = `${ZeroBefore(exerciseDuration)}:${ZeroBefore(seconds)}`;
     document.querySelector('.js-timer-display').innerHTML = String(set);
     seconds--;
     setTimeIdForWorkOut = setTimeout(workOutTime, 1000);
@@ -38,8 +36,7 @@ function workOutTime(){
 function breakTime()
 {
     totalSet--;
-    m = breakDuration <= 9? `0${breakDuration}`: `${breakDuration}`;
-    set = `Break: 00:${m}`;
+    set = `Break: 00:${ZeroBefore(breakDuration)}`;
     document.querySelector('.js-break-display').innerHTML = String(set);
     breakDuration--;
     setTimeBreakId = setTimeout(breakTime, 1000);
@@ -71,3 +68,22 @@ document.querySelector('.js-stop-btn').addEventListener('click',()=>{
 });
 
 
+
+function clock()
+{
+    setTimeout(()=>{
+        let day = new Date();
+        let mintes = day.getMinutes();
+        let hours = day.getHours() > 12? day.getHours() -12 : day.getHours() ;
+        let sec = day.getSeconds();
+        let currentTime =`<h1 class = "clock-display">${ZeroBefore(hours)}:${ZeroBefore(mintes)}:${ZeroBefore(sec)}</h1>`;
+        document.querySelector('.js-clock-container').innerHTML = currentTime;
+        clock();},1000);
+}
+clock();
+
+function ZeroBefore(num)
+{
+    num = num > 9? num:`0${num}`;
+    return num;
+}

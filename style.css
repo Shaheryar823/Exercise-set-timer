@@ -63,3 +63,13 @@ input[type="number"] {
     border-radius: 5px;
     border: 1px solid #ddd;
 }
+.clock-display{
+    font-family: emoji;
+    background-color: beige;
+    border-radius: 15px;
+    max-width: fit-content;
+    padding: 0px 15px;
+}
+.clock-container{
+    text-align: -webkit-center;
+}
