@@ -6,12 +6,13 @@ let breakDuration;
 let seconds = 0; 
 let setTimeBreakId;
 let setTimeIdForWorkOut;
+let totalBreak;
 
 function workOutTime(){
 
     if(seconds === -1)
     {
-        seconds = 9;
+        seconds = 59;
         exerciseDuration -=1;
     }
     set = `${ZeroBefore(exerciseDuration)}:${ZeroBefore(seconds)}`;
@@ -21,8 +22,9 @@ function workOutTime(){
     if(seconds === -1 && exerciseDuration === 0)
     {
         clearTimeout(setTimeIdForWorkOut);
-        if(totalSet > 1)
+        if(totalBreak >= 1)
         {
+            totalBreak--;
             breakTime();
             exerciseDuration = Number(document.querySelector('.js-set-duration').value);
             seconds = 0;
@@ -52,7 +54,10 @@ function start()
 {
     seconds = 0;
     totalSet = Number(document.querySelector('.js-sets').value);
-    console.log(typeof totalSet);
+    totalBreak = totalSet - 1;
+
+
+    console.log(totalSet);
     exerciseDuration = Number(document.querySelector('.js-set-duration').value);
     breakDuration = Number(document.querySelector('.js-break-duration').value);
     document.querySelector('.js-break-display').innerHTML = `Break: 00:${breakDuration}`;
